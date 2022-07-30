@@ -10,3 +10,21 @@ p {
     height: 100vh;
     overflow: scroll;
 }
+.mainBorder{
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+.tabs__content{
+    position: relative;
+    padding-top: 0px;
+    padding-bottom: opx;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+.active_tab .slds-tabs_scoped__link{
+    background-color: rgba(21,137,238,.1);
+    border-color: #dddbda;
+    font-weight: 700;
+    color: var(--sds-c-tabs-scoped-color-text-active,#080707);
+}

@@ -1,30 +1,46 @@
 <template>
-	<div class="app slds-p-around_x-large">
-		<h1 class="slds-text-heading_large">{title}</h1>
-		<h3>Write JavaScript, HTML, and CSS code, and preview the output in the interactive code editor.</h3>
-
-		<!-- Using an if statement -->
-		<template if:true={showFeatures}>
-			<div class="slds-p-top_large">
-				<h2 class="slds-text-heading_medium">Features</h2>
-
-				<!-- Using a for statement -->
-				<template for:each={features} for:item='feature'>
-					<c-child label={feature.label} key={feature.label}>
-
-						<!-- Specifying the 'icon' slot for c-child -->
-						<lightning-icon icon-name={feature.icon} size="x-small" slot="icon"></lightning-icon>
-					</c-child>
-				</template>
+	<lightning-button label="Open Modal" onclick={funcOpenModal} variant="success"></lightning-button>
+	<template if:true={openModal}>
+		<section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01"
+			class="slds-modal slds-fade-in-open slds-modal_large">
+			<div class="slds-modal__container">
+				<button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+<svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+<use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+</svg>
+<span class="slds-assistive-text">Cancel and close</span>
+</button>
+				<div class="slds-modal__content slds-modal__content_headless" id="modal-content-id-1">
+					<!--TABS-->
+					<div id="tab-default-1" class="tabs__content slds-show" role="tabpanel" aria-labelledby="tab-default-1__item">
+						<div class="slds-tabs_scoped">
+							<ul class="slds-tabs_scoped__nav" role="tablist">
+								<li class={objectTab.listTab1} title="Item One" role="presentation" style="width:50%">
+									<!--slds-is-active-->
+									<a class="slds-tabs_scoped__link" href="#" role="tab" tabindex="0" aria-selected="true"
+										aria-controls="tab-scoped-1" id="tab-scoped-1__item" data-value="t1" onclick={handleTabSelect}>Item
+										One</a>
+								</li>
+								<li class={objectTab.listTab2} title="Item Two" role="presentation" style="width:50%">
+									<a class="slds-tabs_scoped__link" href="#" role="tab" tabindex="-1" aria-selected="false"
+										aria-controls="tab-scoped-2" id="tab-scoped-2__item" data-value="t2" onclick={handleTabSelect}>Item
+										Two</a>
+								</li>
+							</ul>
+							<div id="tab-scoped-1" class={objectTab.contentTab1} role="tabpanel" aria-labelledby="tab-scoped-1__item">
+								Item One Content</div>
+							<div id="tab-scoped-2" class={objectTab.contentTab2} role="tabpanel" aria-labelledby="tab-scoped-2__item">
+								Item Two Content</div>
+						</div>
+					</div>
+					<!--tend-->
+				</div>
+				<div class="slds-modal__footer">
+					<button class="slds-button slds-button_neutral" aria-label="Cancel and close">Cancel</button>
+					<button class="slds-button slds-button_brand">Save</button>
+				</div>
 			</div>
-		</template>
-
-		<h2 class="slds-text-heading_medium slds-p-top_large">Resources</h2>
-		<a
-			href="https://developer.salesforce.com/docs/component-library/documentation/en/lwc/lwc.get_started_introduction">
-			Developer Guide
-		</a><br/>
-		<a href="https://developer.salesforce.com/docs/component-library/overview/components">Component Reference</a>
-
-	</div>
+		</section>
+		<div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+	</template>
 </template>
